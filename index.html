@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Project2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans|Roboto:300,400|Questrial|Satisfy">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.0/sl-1.2.3/datatables.min.css"/>
+    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.2.3/wavesurfer.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+
+<body>
+  <div class="header">
+    <div class="bg-color">
+        <nav class="navbar navbar-default navbar-fixed-top"></nav>
+      
+      <div class="wrapper">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 wow fadeIn delay-05s">
+              <div class="banner-text">
+                <nav class="nav">
+                <ul>
+                    <li class="active"><a id="zumbalink" class="title" href="#zumbalogo">Zumba Videos</a></li>
+                    <li><a id="musiclink" href="#music" class="title">Music</a></li>
+                    <li><a id="tourlink" href="#tour" class="title">Tour</a></li>
+                    <li class="scrollTop"><a href="#"><span class="entypo-up-open"></span></a></li>
+                </ul>
+                </nav>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+         </div>
+    </div><!-- end class bg-color-->
+  </div><!-- end class header -->
+  
+  
+  <section id="zumba" class="section-padding wow fadeIn delay-05s">
+     <div class="container">
+        <br><br>
+        <div class="row">
+           <div class="col-md-4">
+              <img id="zumbalogo" src="images/Zumba-logo23.jpg" alt="ZumbaLogo" style="width:60%">
+           </div>
+           <div class="col-md-8">
+              <img id="zumbatime" src="images/zumba-time.jpg" alt="ZumbaTime" style="width:50%">
+           </div>
+        </div>
+     </div><!-- end container-->
+    
+   
+     <div class="zumba"><!--for zumba background image-->
+     <br><br><br><br><br>
+        <div class="container">
+            <div align="center">
+                <div class="row">
+                    <div class="col-md-5" id="videoList" class="videoList">
+                        
+                    </div>
+                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content modal-lg">
+                                <div class="modal-body" id="videoModal">
+                                    <!--<iframe  id="iframeYoutube" width="560" height="315"  src="https://www.youtube.com/embed/e80BbX05D7Y" frameborder="0" allowfullscreen></iframe> -->
+                                    <iframe allowfullscreen frameborder='0' id='iframeYoutube' width='720' height='480' src='https://www.youtube.com/embed/e80BbX05D7Y'></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+        <br><br><br><br><br>
+        </div>
+     </div>
+  </section>    
+        
+
+
+    <div class="container">
+        <div class="row">    
+            <div class="offset-col-md-6 text-right">   
+                <h2 id="music" class="title-text">Welcome<br><span class="deco">Yan's</span> Favorite Music</h2>
+            </div>
+        </div>
+    </div>
+
+        
+    <section  class="section-padding wow fadeIn delay-05s pop-music">
+        <div class="container">
+        
+<!--------------------------- wave player section --------------------------------------->   
+            <div id="waveform"></div>
+                <div class="row">
+                    <progress id="progress" class="col-md-8 progress progress-striped" value="100" max="100" style="display: none;"></progress>
+                </div>
+                <div class="row">
+                    <div style="text-align: center" class="col-md-8">
+                        <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+                            <i class="glyphicon glyphicon-play"></i>Play/<i class="glyphicon glyphicon-pause"></i>Pause
+                        </button>
+                    </div>
+                </div>
+                
+                <div><input></input>
+                </div>
+                
+                <button class="btn btn-primary" onclick="wavesurfer.getCurrentTime()">Submit</button>
+
+
+<!--------------------------- music list section --------------------------------------->        
+            <div class="row" style="margin-top:30px">
+                <div class="col-md-8 col-sm-7 song-table">
+                    <table id="myTable" class="table table-responsive table-active table-hover">
+                      <thead>
+                        <tr>
+                          <th>Song</th>
+                          <th>Artist</th>
+                          <th>Album</th>
+                          <th>Download</th>
+                        </tr>
+                      </thead>
+                      <tbody id="data">
+                      
+                      </tbody>
+                    </table>
+                </div>
+            
+                <div class="col-md-1 col-sm-1"></div>
+                
+                <div class="col-md-3 col-sm-4">
+                    <div id="thumbnail" align="center">
+                    </div>
+                    <div class="detail" align="left">
+                        <div id="song" class="row player-font">
+                        </div>
+                        <div id="artist" class="row player-font">
+                        </div>
+                        <div id="album" class="row player-font">
+                        </div>
+                    </div>
+                    <div id="previewURL">
+                    </div>
+                </div><!-- end column-->
+            </div>
+
+            <br><br><br><br><br>
+            
+        </div><!--end container-->
+    </section>
+
+    <div class="container">
+        <div class="row">    
+            <div class="offset-col-md-6 text-right">   
+                <h2 id="tour" class="title-text">These<br><span class="deco">Tours</span> Will be Fun!</h2>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="tour">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div id="tourList" class="tourContent"></div>
+                    </div>
+                </div>
+            </div>
+        
+        
+        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>
+    
+    
+    
+    </section>
+
+
+<script src="https://www.gstatic.com/firebasejs/4.6.0/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBwXBsmzvjNNilTfRSNNKK5aVurAmMutFo",
+    authDomain: "project2-de511.firebaseapp.com",
+    databaseURL: "https://project2-de511.firebaseio.com",
+    projectId: "project2-de511",
+    storageBucket: "project2-de511.appspot.com",
+    messagingSenderId: "1091091534497"
+  };
+  firebase.initializeApp(config);
+</script>
+    
+<script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/r-2.2.0/sl-1.2.3/datatables.min.js"></script>
+
+<script src="wave-player-test.js"></script>
+<script src="js/project2.js"></script>
+
+</body>
+</html>
