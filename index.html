@@ -92,67 +92,81 @@
     </div>
 
 
-    <section  class="section-padding wow fadeIn delay-05s pop-music">
-        <div class="container">
-
-<!--------------------------- wave player section --------------------------------------->
-            <div id="waveform"></div>
+    <section  class="wow fadeIn delay-05s">
+        <div class="row wave-container">
+            <div class="container">
+                <br/><br/><br/>
+                <!--=============================== wave player section ==============================-->
                 <div class="row">
-                    <progress id="progress" class="col-md-8 progress progress-striped" value="100" max="100" style="display: none;"></progress>
-                </div>
-                <div class="row">
-                    <div style="text-align: center" class="col-md-8">
-                        <button class="btn btn-primary" onclick="wavesurfer.playPause()">
+                    <div class="col-md-8">
+                        <button class="btn btn-default" onclick="wavesurfer.playPause()">
                             <i class="glyphicon glyphicon-play"></i>Play/<i class="glyphicon glyphicon-pause"></i>Pause
                         </button>
                     </div>
                 </div>
-
-                <div><input></input>
+                <br/><br/>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div id="waveform"></div>
+                    </div>
+                    <div class="col-md-1"></div>
+                    
+                    <div class="col-md-3">
+                        <div id="thumbnail" align="center">
+                        </div>
+                        <div class="detail" align="left">
+                            <div id="song" class="row player-font">
+                            </div>
+                            <div id="artist" class="row player-font">
+                            </div>
+                            <div id="album" class="row player-font">
+                            </div>
+                        </div>
+                        <div id="previewURL">
+                        </div>
+                    </div><!-- end column-->
                 </div>
-
-                <button class="btn btn-primary" onclick="wavesurfer.getCurrentTime()">Submit</button>
-
-
-<!--------------------------- music list section --------------------------------------->
-            <div class="row" style="margin-top:30px">
-                <div class="col-md-8 col-sm-7 song-table">
-                    <table id="myTable" class="table table-responsive table-active table-hover">
-                      <thead>
-                        <tr>
-                          <th>Song</th>
-                          <th>Artist</th>
-                          <th>Album</th>
-                          <th>Download</th>
-                        </tr>
-                      </thead>
-                      <tbody id="data">
-
-                      </tbody>
-                    </table>
+                
+                <div class="row">
+                    <progress id="progress" class="col-md-8 progress progress-striped" value="100" max="100" style="display: none;"></progress>
                 </div>
-
-                <div class="col-md-1 col-sm-1"></div>
-
-                <div class="col-md-3 col-sm-4">
-                    <div id="thumbnail" align="center">
-                    </div>
-                    <div class="detail" align="left">
-                        <div id="song" class="row player-font">
-                        </div>
-                        <div id="artist" class="row player-font">
-                        </div>
-                        <div id="album" class="row player-font">
-                        </div>
-                    </div>
-                    <div id="previewURL">
-                    </div>
-                </div><!-- end column-->
+                <br/>
+                <div class="input-group col-md-6">
+                    <input type="text" class="form-control" placeholder="Write a comment ...">
+                    <span class="input-group-btn">
+                    <button class="btn btn-primary btn-comment" type="button" onclick="wavesurfer.getCurrentTime()">Submit</button>
+                    </span>
+                </div><!-- /input-group -->
+                <br/><br/>
             </div>
+        </div>
+        <div class="row pop-music">
+            <!--================================ music list section =============================-->
+            <div class="container">
+                <div class="row" style="margin-top:30px">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8 song-table">
+                        <table id="myTable" class="table table-responsive table-active table-hover">
+                            <thead>
+                            <tr>
+                                <th>Song</th>
+                                <th>Artist</th>
+                                <th>Album</th>
+                                <th>Download</th>
+                            </tr>
+                            </thead>
+                            <tbody id="data">
 
-            <br><br><br><br><br>
-
-        </div><!--end container-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+                <br><br><br><br><br>
+            </div>
+            <!--=============================== end container ====================================-->
+        </div>
+        
     </section>
 
     <div class="container">
@@ -172,13 +186,8 @@
                     </div>
                 </div>
             </div>
-
-
         <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
         </div>
-
-
-
     </section>
 
 

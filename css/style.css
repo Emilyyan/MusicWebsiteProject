@@ -1,26 +1,53 @@
+.btn-comment{
+    border-color: rgb(86, 99, 117);
+    background-color: #416a86;
+}
+.btn-comment:focus{
+    outline: 0;
+    background-color: #416a86;
+}
+.btn-comment:hover{
+    background-color: rgb(86, 99, 117);
+}
+
+.btn-default{
+    border: none;
+}
+.btn-default:focus{
+    outline: 0;
+    background-color: white;
+}
+.btn-default:hover{
+    background-color: rgb(200, 222, 240);
+}
+
+
+div.wave-container{
+    margin: 0;
+    background: #ff8888; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ff8888, #ffeba3); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ff8888, #ffeba3); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ff8888, #ffeba3); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom left,#ecf6ff, #1f6da9);
+}
+
 canvas{
     width:800px
 }
 
 .tour{
     background: linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url('../images/Yuna.jpg') no-repeat;
-	background-size: 100%;
-	margin-top: 30px;
-	margin-bottom: -3px
-
-
+  	background-size: 100%;
+  	margin-top: 30px;
+  	margin-bottom: -3px
 }
 
 .tourContent{
     margin-top:40px;
     line-height: 1.4;
-	font-family: "Open Sans", sans-serif;
+	  font-family: "Open Sans", sans-serif;
     letter-spacing: 0.5px;
     font-size: 1.5em;
-
-
-
-
 }
 
 .player-font{
@@ -86,10 +113,9 @@ sub-video{
 }
 
 .pop-music{
-    background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.5)),url('../images/smoke.jpg') no-repeat;
 	background-size: 100%;
-	margin-top: 30px;
-	margin-bottom: -3px
+    margin-bottom: -3px;
+    background: linear-gradient(#4a4747,#7d7d7d);
 }
 
 .banner-text{

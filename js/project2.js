@@ -1,5 +1,6 @@
 var table;
 $(document).ready(function(){
+
     table = $('#myTable').DataTable({
             //"lengthMenu": [6],
             "bLengthChange": false,
@@ -138,6 +139,7 @@ function getInfo() {
   $( "#previewURL" ).html("<audio controls controlsList='nodownload' class='audio'><source src='" + previewURL + "' audio='m4a'></audio>" );
 
 }
+
 $( "body" ).on( "click", ".music-to-choose", getInfo);//needs to use .on and bind it to body since the element is dynamically added
 
 
