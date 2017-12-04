@@ -21,4 +21,13 @@ wavesurfer.on('ready', function (percents) {
     document.getElementById('progress').style.display = 'none';
 });
 
-wavesurfer.load('https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/AudioPreview30/v4/4f/42/0c/4f420c68-cbf1-47de-be68-927ccfdcef01/mzaf_5308035793306250766.plus.aac.p.m4a');
+
+$( "body" ).on( "click", ".music-to-choose", switchMusic);
+function switchMusic(){
+     var thumbnail = $( this ).data("thumb-nail");
+     var previewURL = $(this).children('.previewUrl').children('a').attr('href');
+     wavesurfer.load(previewURL);
+
+
+}
+

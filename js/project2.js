@@ -143,12 +143,16 @@ function getInfo() {
 $( "body" ).on( "click", ".music-to-choose", getInfo);//needs to use .on and bind it to body since the element is dynamically added
 
 
-//tour list section
-function getTours(){
+//wave player section
+function submitComment(){
+    var cur_time = wavesurfer.getCurrentTime();
+    var comment = $("#comment").val(); //get comment content
 
-
-
-
+    firebase.database().ref('Comments/').push({
+        timestamp: cur_time,
+        comment: comment,
+    });
+    $("#comment").val('');//empty input area after submit
 }
 
 

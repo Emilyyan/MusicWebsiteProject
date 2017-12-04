@@ -115,6 +115,7 @@
                     <div class="col-md-3">
                         <div id="thumbnail" align="center">
                         </div>
+                        <!--
                         <div class="detail" align="left">
                             <div id="song" class="row player-font">
                             </div>
@@ -124,7 +125,7 @@
                             </div>
                         </div>
                         <div id="previewURL">
-                        </div>
+                        </div>-->
                     </div><!-- end column-->
                 </div>
                 
@@ -133,9 +134,9 @@
                 </div>
                 <br/>
                 <div class="input-group col-md-6">
-                    <input type="text" class="form-control" placeholder="Write a comment ...">
+                    <input type="text" id="comment" value="" class="form-control" placeholder="Write a comment ...">
                     <span class="input-group-btn">
-                    <button class="btn btn-primary btn-comment" type="button" onclick="wavesurfer.getCurrentTime()">Submit</button>
+                    <button class="btn btn-primary btn-comment" type="button" onclick="submitComment()">Submit</button>
                     </span>
                 </div><!-- /input-group -->
                 <br/><br/>
