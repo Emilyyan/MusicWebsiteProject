@@ -70,7 +70,7 @@ sub-video{
 
 .detail{
     color: white
-    
+
 }
 
 .navbar-text {
@@ -199,7 +199,7 @@ a:hover, a:focus, a:active{
 }
 
 .top-nav-collapse {
-    padding: 0; 
+    padding: 0;
     background: rgba(50,60,70, 0.9);
 }
 
@@ -246,4 +246,28 @@ a:hover, a:focus, a:active{
 }
 .padding-right-zero{
 	padding-right: 0px !important;
+}
+.page-contents{
+  max-height: 300px;
+  overflow: auto;
+}
+
+.video-box{
+  background-color: rgba(0,0,0,0.56);
+  color: #bfbfbf;
+  max-height: 422px;
+}
+
+li.media:hover{
+  background-color: rgba(237, 154, 154, 0.38);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+a.video:hover{
+  cursor: pointer;
+}
+
+.player-font{
+    color: rgb(72,72,72);
+    font-weight: bold
 }

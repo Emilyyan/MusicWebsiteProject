@@ -1,4 +1,4 @@
-var table; 
+var table;
 $(document).ready(function(){
     table = $('#myTable').DataTable({
             //"lengthMenu": [6],
@@ -17,7 +17,7 @@ $(document).ready(function(){
 
     var db = firebase.database();
     db.ref("/ZumbaMusic").on("value", function(snapshot){
-                
+
                 snapshot.forEach(function(childSnapshot) {
                     //console.log(childSnapshot.val().ID);
                     ID = childSnapshot.val().ID;
@@ -28,17 +28,17 @@ $(document).ready(function(){
 	                }
 	                var url = 'http://query.yahooapis.com/v1/public/yql';
 	                $.getJSON(url, params, showResults);
-	                
+
                 });
-                
-                
+
+
                 var size = snapshot.numChildren();
                 //console.log(size);
-                
-    }); 
-    
-   
-   
+
+    });
+
+
+
    //tour part
    db.ref("/Tour").on("value", function(snapshot){
                 snapshot.forEach(function(childSnapshot) {
@@ -48,53 +48,50 @@ $(document).ready(function(){
                     place = childSnapshot.val().location;
                     city = childSnapshot.val().city;
                     tickets = childSnapshot.val().ticketsURL;
-                    
+
                     var tourItem = `<div class="row">
                                         <div class="col-md-2">${date}</div>
                                         <div class='col-md-2'>${artist}</div>
                                         <div class='col-md-2'>${place}</div>
                                         <div class='col-md-2'>${city}</div>
                                         <div class='col-md-2'><a target="_blank" href="${tickets}">tickets</a></div>`;
-                    $( "#tourList").append(tourItem);  
+                    $( "#tourList").append(tourItem);
                 });
-   }); 
-   
+   });
+
    //video part
    db.ref("/ZumbaVideo").on("value", function(snapshot){
-                snapshot.forEach(function(childSnapshot) {
-                    videoID = childSnapshot.val().ID;
-                    videoName = childSnapshot.val().name;
-	                var url = "https://www.youtube.com/embed/"+videoID;
-	                //var iframeCode = "<iframe allowfullscreen frameborder='0' id='iframeYoutube' width='720' height='480' src='https://www.youtube.com/embed/" + videoID+ "></iframe>";
-	                var listCode = "<div class='row' style='margin-top:20px'><a style='font-weight: bold;font-size: 30px' class='video' id='"+ url+"'>"+videoName+"</a></div>";
-	                
-	                $( "#videoList").append(listCode);  
-	                //console.log($( "#videoList").html());
-	            
-                });
-                
-    }); 
-    
-    
-    $("#myModal").on("hidden.bs.modal",function(){
-        $("#iframeYoutube").attr("src","#");
+        snapshot.forEach(function(childSnapshot) {
+            videoID = childSnapshot.val().ID;
+            videoName = childSnapshot.val().name;
+            var url = "https://www.youtube.com/embed/"+videoID;
+
+            var img_src = `https://img.youtube.com/vi/${videoID}/default.jpg`;
+            var listItem = `<li class="media">
+                                <div class="media-left">
+                                <a class='video' id='${url}'>
+                                    <img class="media-object" src="${img_src}">
+                                </a>
+                                </div>
+                                <div class="media-body">
+                                <h4 class="media-heading">${videoName}</h4>
+                                </div>
+                            </li>`;
+            $(".media-list").append(listItem);
+        });
     });
-   
-    
 });
 
 function changeVideo(){
-  var url = $(this).attr("id");
-  var iframe=document.getElementById("iframeYoutube");
-  iframe.src=url;
-  //console.log($("#videoModal").html());
-  $("#myModal").modal("show");
+    var url = $(this).attr("id");
+    var iframe=document.getElementById("utube");
+    iframe.src=url;
 }
 
 $( "body" ).on( "click", ".video", changeVideo);
 
 
-var row_data = document.getElementById("data"); 
+var row_data = document.getElementById("data");
 var count = 1;
 
 function showResults(response){
@@ -112,7 +109,7 @@ function showResults(response){
     //var URLicon = "<a target='_blank' href='" + trackviewURL + "'><span class='glyphicon glyphicon-music btn-lg'></span></a>"
     var previewURLicon = "<a href='" + previewURL + "'><span class='glyphicon glyphicon-download btn-lg'></span></a>"
 
-    /*row_data.innerHTML += "<tr class='music-to-choose' data-thumb-nail='" + thumbnail + "'><th scope='row'>" + count + "</th><td class='info-name'>" + song + 
+    /*row_data.innerHTML += "<tr class='music-to-choose' data-thumb-nail='" + thumbnail + "'><th scope='row'>" + count + "</th><td class='info-name'>" + song +
                         "</td><td class='info-artist'>" + artist + "</td><td class='info-album'>" + album + "</td><td class='trackUrl'>"
                         + URLicon + "</td><td class='previewUrl'>" + previewURLicon + "</td></tr>";*/
     var rowNode = table.row.add([song, artistLinkCode, trackLinkCode, previewURLicon ]).draw().node();
@@ -133,13 +130,13 @@ function showResults(response){
 //used to update info of player
 function getInfo() {
     var thumbnail = $( this ).data("thumb-nail");
-  $( "#thumbnail").html ("<img class='thumbnail' src='"+thumbnail+"'>" );  
+  $( "#thumbnail").html ("<img class='thumbnail' src='"+thumbnail+"'>" );
   $( "#song" ).html("<p class='navbar-text'>" + $(this).children('.info-name').html() +"</p>");
   $( "#artist" ).html("<p class='navbar-text'>" + $(this).children('.info-artist').children('a').text() +"</p>");
   $( "#album" ).html("<p class='navbar-text'>" + $(this).children('.info-album').children('a').text() + "</p>");
   var previewURL = $(this).children('.previewUrl').children('a').attr('href');
   $( "#previewURL" ).html("<audio controls controlsList='nodownload' class='audio'><source src='" + previewURL + "' audio='m4a'></audio>" );
-  
+
 }
 $( "body" ).on( "click", ".music-to-choose", getInfo);//needs to use .on and bind it to body since the element is dynamically added
 
@@ -156,9 +153,9 @@ function getTours(){
 
 //the scroll javascript code is from https://codepen.io/mattsince87/pen/exByn
 function scrollNav() {
-  $('.nav a').click(function(){  
+  $('.nav a').click(function(){
     //Toggle Class
-    $(".active").removeClass("active");      
+    $(".active").removeClass("active");
     $(this).closest('li').addClass("active");
     var theClass = $(this).attr("class");
     $('.'+theClass).parent('li').addClass('active');
