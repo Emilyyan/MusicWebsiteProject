@@ -43,7 +43,7 @@ $(document).ready(function(){
    //tour part
    db.ref("/Tour").on("value", function(snapshot){
                 snapshot.forEach(function(childSnapshot) {
-                    console.log(childSnapshot.val());
+                    //console.log(childSnapshot.val());
                     date = childSnapshot.val().time;
                     artist =  childSnapshot.val().artist;
                     place = childSnapshot.val().location;
@@ -81,6 +81,9 @@ $(document).ready(function(){
             $(".media-list").append(listItem);
         });
     });
+    
+    window.firstRow = table.rows( 0 ).data();
+    console.log(firstRow);
 });
 
 function changeVideo(){
@@ -97,7 +100,7 @@ var count = 1;
 
 function showResults(response){
     var info = response.query.results.json.results;
-    console.log(info);
+    //console.log(info);
     var thumbnail = info.artworkUrl100;
     var song = info.trackCensoredName;
     var artist = info.artistName;
