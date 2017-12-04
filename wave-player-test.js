@@ -9,7 +9,8 @@ var wavesurfer = WaveSurfer.create({
     progressColor: 'hsla(200, 100%, 30%, 0.5)',
     cursorColor: '#fff',
     barWidth: 3,
-    height: 100
+    height: 100,
+    maxCanvasWidth: 800
 });
 
 wavesurfer.on('loading', function (percents) {

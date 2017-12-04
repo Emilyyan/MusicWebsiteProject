@@ -51,11 +51,11 @@ $(document).ready(function(){
                     tickets = childSnapshot.val().ticketsURL;
 
                     var tourItem = `<div class="row">
-                                        <div class="col-md-2">${date}</div>
-                                        <div class='col-md-2'>${artist}</div>
-                                        <div class='col-md-2'>${place}</div>
-                                        <div class='col-md-2'>${city}</div>
-                                        <div class='col-md-2'><a target="_blank" href="${tickets}">tickets</a></div>`;
+                                        <div class="col-md-2 tourItem">${date}</div>
+                                        <div class="col-md-2 tourItem">${artist}</div>
+                                        <div class="col-md-2 tourItem">${place}</div>
+                                        <div class="col-md-3 tourItem">${city}</div>
+                                        <div class="col-md-2 tourItem"><a target="_blank" href="${tickets}">tickets</a><i class="fa fa-ticket" aria-hidden="true"></i></div>`;
                     $( "#tourList").append(tourItem);
                 });
    });
