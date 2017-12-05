@@ -164,7 +164,28 @@ function submitComment(){
     $("#comment").val('');//empty input area after submit
 }
 
+function printComment(ts, comment){
+    //get container width
+    var width = $('#waveform').css('width').replace(/[^-\d\.]/g, '');
+    //calculate comment position on timeline
+    var position = ts / wavesurfer.getDuration() * width;
 
+    var element = `<span 
+                        class="h3 comment-indicator" 
+                        data-toggle="tooltip" 
+                        data-placement="bottom" 
+                        data-original-title="${comment} @ ${ts}s"
+                        style="left:${position}"
+                    >.</span>`;
+    $('#showComments').append(element);
+}
+//example use:
+printComment(19.6,"test comment");
+
+//initialize tooltips on comments
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+});
 
 //the scroll javascript code is from https://codepen.io/mattsince87/pen/exByn
 function scrollNav() {

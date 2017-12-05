@@ -21,6 +21,16 @@ wavesurfer.on('ready', function (percents) {
     document.getElementById('progress').style.display = 'none';
 });
 
+/*
+$('body').on('mousemove','#waveform',
+function(){
+    //get container width
+    var width = $('#waveform').css('width').replace(/[^-\d\.]/g, '');
+    //calculate the time point of mouse position on the wave
+    var mouseTime = (event.layerX / width) * wavesurfer.getDuration();
+    console.log(mouseTime);
+});
+*/
 
 $( "body" ).on( "click", ".music-to-choose", switchMusic);
 function switchMusic(){

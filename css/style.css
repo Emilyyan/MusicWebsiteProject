@@ -1,3 +1,9 @@
+.comment-indicator{
+    color: white;
+    cursor: pointer;
+    position: relative;
+}
+
 .btn-comment{
     border-color: rgb(86, 99, 117);
     background-color: #416a86;
@@ -20,7 +26,6 @@
 .btn-default:hover{
     background-color: rgb(200, 222, 240);
 }
-
 
 div.wave-container{
     margin: 0;
