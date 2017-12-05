@@ -19,6 +19,15 @@ wavesurfer.on('loading', function (percents) {
 
 wavesurfer.on('ready', function (percents) {
     document.getElementById('progress').style.display = 'none';
+    //example use:
+    printComment(19.6,"test comment");
+    printComment(2,"beginning test");
+    printComment(29.6,"another comment");
+
+    //initialize tooltips on comments whenever a different wave is loaded
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 });
 
 /*

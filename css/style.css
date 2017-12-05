@@ -1,12 +1,18 @@
-.comment-indicator{
-    color: white;
-    cursor: pointer;
+#showComments{
     position: relative;
+}
+.comment-indicator{
+    color: #416a86;
+    cursor: pointer;
+    position: absolute;
+}
+.comment-indicator:hover{
+    color: white;
 }
 
 .btn-comment{
     border-color: rgb(86, 99, 117);
-    background-color: #416a86;
+    background-color: #001b2c;
 }
 .btn-comment:focus{
     outline: 0;

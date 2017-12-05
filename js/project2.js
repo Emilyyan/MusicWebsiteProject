@@ -175,17 +175,10 @@ function printComment(ts, comment){
                         data-toggle="tooltip" 
                         data-placement="bottom" 
                         data-original-title="${comment} @ ${ts}s"
-                        style="left:${position}"
+                        style="left:${position}px"
                     >.</span>`;
     $('#showComments').append(element);
 }
-//example use:
-printComment(19.6,"test comment");
-
-//initialize tooltips on comments
-$(function () {
-    $('[data-toggle="tooltip"]').tooltip();
-});
 
 //the scroll javascript code is from https://codepen.io/mattsince87/pen/exByn
 function scrollNav() {
