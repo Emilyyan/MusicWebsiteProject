@@ -96,16 +96,35 @@
     <section  class="wow fadeIn delay-05s">
         <div class="row wave-container">
             <div class="container">
-                <br/><br/><br/>
+                <br/>
                 <!--=============================== wave player section ==============================-->
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-2">
                         <button class="btn btn-default" onclick="wavesurfer.playPause()">
                             <i class="glyphicon glyphicon-play"></i>Play/<i class="glyphicon glyphicon-pause"></i>Pause
                         </button>
                     </div>
+                    <div class="col-md-4">
+                        <h2><span id="music-title" class="label"></span></h2>
+                        <h3><span id="music-artist" class="label"></span></h3>
+                    </div>
                 </div>
-                <br/><br/>
+                <div class="row">
+                    <div class="col-md-2 volbox">
+                        <input id="volume" class="volume" type="range" min="0" max="1" value="0.8" step="0.05">
+                        <span style="white-space:nowrap" class="glyphicon glyphicon-volume-up" aria-hidden="true"></span>
+                    </div>
+                </div>
+                <!--<div class="row">
+                    <div class="col-md-8">
+                        <h2><span id="music-title" class="label label-default"></span></h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <h3><span id="music-artist" class="label label-default"></span></h3>
+                    </div>
+                </div>-->
                 <div class="row">
                     <div class="col-md-9">
                         <br/><br/><br/>

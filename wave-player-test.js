@@ -27,7 +27,14 @@ function switchMusic(){
      var thumbnail = $( this ).data("thumb-nail");
      var previewURL = $(this).children('.previewUrl').children('a').attr('href');
      wavesurfer.load(previewURL);
-
-
+     var music_title = $(this).children('.info-name').html();
+     var music_artist = $(this).children('.info-artist').children('a').text();
+     $("#music-title").html(music_title);
+     $("#music-artist").html(music_artist);
 }
 
+$( "#volume" ).change(function() {
+    var volume = $(this).val();
+    console.log(volume);
+    wavesurfer.setVolume(volume);
+});

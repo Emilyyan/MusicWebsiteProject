@@ -82,8 +82,14 @@ $(document).ready(function(){
         });
     });
     
-    window.firstRow = table.rows( 0 ).data();
-    console.log(firstRow);
+//music waver initialization
+    wavesurfer.setVolume(0.8);
+    wavesurfer.load("https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music69/v4/fb/2c/c5/fb2cc5a7-55fd-b29c-24e3-161abbcf6828/mzaf_134090899222024740.plus.aac.p.m4a");
+    $("#music-title").html("Black Gun (English Version)");
+    $("#music-artist").html("Happy People");
+    var init_nail = "http://is5.mzstatic.com/image/thumb/Music69/v4/a1/d8/51/a1d851c4-4ade-93a8-3b64-e6211ed04a40/source/100x100bb.jpg";
+    $("#thumbnail").html(`<img class="thumbnail" src="${init_nail}">`);
+   
 });
 
 function changeVideo(){
