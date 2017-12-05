@@ -27,10 +27,8 @@ $(document).ready(function(){
 	                    format: "json"
 	                }
 	                var url = 'http://query.yahooapis.com/v1/public/yql';
-	                $.getJSON(url, params, showResults);
-
+	                $.getJSON(url, params, showResults);      
                 });
-
 
                 var size = snapshot.numChildren();
                 //console.log(size);
@@ -41,22 +39,22 @@ $(document).ready(function(){
 
    //tour part
    db.ref("/Tour").on("value", function(snapshot){
-                snapshot.forEach(function(childSnapshot) {
-                    //console.log(childSnapshot.val());
-                    date = childSnapshot.val().time;
-                    artist =  childSnapshot.val().artist;
-                    place = childSnapshot.val().location;
-                    city = childSnapshot.val().city;
-                    tickets = childSnapshot.val().ticketsURL;
+        snapshot.forEach(function(childSnapshot) {
+            //console.log(childSnapshot.val());
+            date = childSnapshot.val().time;
+            artist =  childSnapshot.val().artist;
+            place = childSnapshot.val().location;
+            city = childSnapshot.val().city;
+            tickets = childSnapshot.val().ticketsURL;
 
-                    var tourItem = `<div class="row">
-                                        <div class="col-md-2 tourItem">${date}</div>
-                                        <div class="col-md-2 tourItem">${artist}</div>
-                                        <div class="col-md-2 tourItem">${place}</div>
-                                        <div class="col-md-3 tourItem">${city}</div>
-                                        <div class="col-md-2 tourItem"><a target="_blank" href="${tickets}">tickets</a><i class="fa fa-ticket" aria-hidden="true"></i></div>`;
-                    $( "#tourList").append(tourItem);
-                });
+            var tourItem = `<div class="row">
+                                <div class="col-md-2 tourItem">${date}</div>
+                                <div class="col-md-2 tourItem">${artist}</div>
+                                <div class="col-md-2 tourItem">${place}</div>
+                                <div class="col-md-3 tourItem">${city}</div>
+                                <div class="col-md-2 tourItem"><a target="_blank" href="${tickets}">tickets</a><i class="fa fa-ticket" aria-hidden="true"></i></div>`;
+            $( "#tourList").append(tourItem);
+        });
    });
 
    //video part

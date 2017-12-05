@@ -2,6 +2,7 @@
     position: relative;
 }
 .comment-indicator{
+    top: -35px;
     color: #416a86;
     cursor: pointer;
     position: absolute;
@@ -35,11 +36,11 @@
 
 div.wave-container{
     margin: 0;
-    background: #ff8888; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(#ff8888, #ffeba3); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(#ff8888, #ffeba3); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(#ff8888, #ffeba3); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom left,#ecf6ff, #1f6da9);
+    background: #4fa4c0; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#ffffff, #4fa4c0); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#ffffff, #4fa4c0); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#ffffff, #4fa4c0); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom left,#ffffff, #4fa4c0)
 }
 
 .tour{
@@ -186,9 +187,11 @@ sub-video{
 	margin-bottom: 10px;
 	font-size: 24px
 }
-
-.header {
-    background: linear-gradient(rgba(255,255,255,.2), rgba(255,255,255,.5)),url('../images/final-bg.png') no-repeat fixed center;
+.header-left{
+    background:lightblue;
+}
+.header-right {
+    background: linear-gradient(rgba(56, 227, 255, 0.2), rgb(77, 163, 191)),url(../images/final-bg.png) no-repeat fixed center;
     background-size: cover;
     min-height: 630px;
     position: relative;
