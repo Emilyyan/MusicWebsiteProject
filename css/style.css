@@ -325,3 +325,7 @@ h3 {
 .volume{
     width:90%!important;
 }
+
+.glyphicon-volume-up {
+    margin-left: -30px
+}
