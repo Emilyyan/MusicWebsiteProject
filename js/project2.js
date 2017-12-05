@@ -184,6 +184,7 @@ $( "body" ).on( "click", ".music-to-choose", getInfo);//needs to use .on and bin
 //wave player section
 function submitComment(){
     var cur_time = wavesurfer.getCurrentTime();
+    //console.log(cur_time);
     var comment = $("#comment").val(); //get comment content
     var musicID = $(".music-title").attr("id");
     
@@ -210,8 +211,8 @@ function printComment(ts, comment){
                         class="h3 comment-indicator" 
                         data-toggle="tooltip" 
                         data-placement="bottom" 
-                        title="${comment} @ ${ts}s"
-                        style="left:${position}px"
+                        title="${comment} @ ${ts.toFixed(2)}s"
+                        style="left:${position.toFixed(0)}px"
                     >.</span>`;
     $('#showComments').append(element);
 }

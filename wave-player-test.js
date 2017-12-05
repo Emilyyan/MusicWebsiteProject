@@ -32,6 +32,19 @@ wavesurfer.on('ready', function (percents) {
     });
 });
 
+// Display comments along timeline when playing the audio
+wavesurfer.on('audioprocess', function(){
+    Array.prototype.forEach.call($('.comment-indicator'), item => {
+        //comment position (start from 0)
+        var comment = item.style.cssText.substr(6).slice(0,-3);
+        //cursor position (start form 1)
+        var cursor = $('#waveform>wave>wave').css('width').slice(0,-2);
+        if(comment == cursor-1){         
+            $(item).tooltip('show');
+            setTimeout(function(){$('.comment-indicator').tooltip('hide'); }, 1000);
+        }
+      });
+});
 /*
 $('body').on('mousemove','#waveform',
 function(){
