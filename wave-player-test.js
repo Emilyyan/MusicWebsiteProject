@@ -19,6 +19,9 @@ wavesurfer.on('loading', function (percents) {
 
 wavesurfer.on('ready', function (percents) {
     document.getElementById('progress').style.display = 'none';
+    //clear comments for previous wave before loading comments for the current one
+    $('#showComments').html('');
+    
     //example use:
     printComment(19.6,"test comment");
     printComment(2,"beginning test");
