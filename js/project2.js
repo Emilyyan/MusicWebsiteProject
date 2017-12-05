@@ -20,7 +20,6 @@ $(document).ready(function(){
     db.ref("/ZumbaMusic").on("value", function(snapshot){
 
                 snapshot.forEach(function(childSnapshot) {
-                    //console.log(childSnapshot.val().ID);
                     ID = childSnapshot.val().ID;
                     var query = "select * from json where url='https://itunes.apple.com/us/lookup?id="+ID+"'";
                     var params = {
@@ -85,11 +84,41 @@ $(document).ready(function(){
 //music waver initialization
     wavesurfer.setVolume(0.8);
     wavesurfer.load("https://audio-ssl.itunes.apple.com/apple-assets-us-std-000001/Music69/v4/fb/2c/c5/fb2cc5a7-55fd-b29c-24e3-161abbcf6828/mzaf_134090899222024740.plus.aac.p.m4a");
-    $("#music-title").html("Black Gun (English Version)");
-    $("#music-artist").html("Happy People");
+    $(".music-title").html("Black Gun (English Version)");
+    $(".music-artist").html("Happy People");
+    $(".music-title").attr("id", "1076561304");
+
     var init_nail = "http://is5.mzstatic.com/image/thumb/Music69/v4/a1/d8/51/a1d851c4-4ade-93a8-3b64-e6211ed04a40/source/100x100bb.jpg";
     $("#thumbnail").html(`<img class="thumbnail" src="${init_nail}">`);
+    getCommentfromDB("Comments/1076561304");
+    
    
+ 
+    //when switch song, get and display comments    
+    $( "body" ).on( "click", ".music-to-choose", getComment);
+    function getComment(){
+        $('#showComments').html('');//clean first
+        var musicID = $(".music-title").attr("id");
+        var path = "Comments/" + musicID; 
+        getCommentfromDB(path);
+        
+    }
+      
+    //get comments of corresponding song from firebase
+    function getCommentfromDB(path){
+        db.ref(path).once("value", function(snapshot){
+            snapshot.forEach(function(data) {
+                var ts = data.val().timestamp;
+                var comment = data.val().comment;
+            
+                printComment(ts, comment);
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip();
+                });
+            });
+        });
+    }   
+
 });
 
 function changeVideo(){
@@ -106,7 +135,7 @@ var count = 1;
 
 function showResults(response){
     var info = response.query.results.json.results;
-    //console.log(info);
+    var trackId = info.trackId;
     var thumbnail = info.artworkUrl100;
     var song = info.trackCensoredName;
     var artist = info.artistName;
@@ -125,6 +154,7 @@ function showResults(response){
     var rowNode = table.row.add([song, artistLinkCode, trackLinkCode, previewURLicon ]).draw().node();
     $(rowNode).addClass("music-to-choose");
     //$(rowNode).add("data-thumb-nail='" + thumbnail + "'");
+    $(rowNode).attr( 'id', trackId);
     $(rowNode).attr("data-thumb-nail", thumbnail);
     $( rowNode ).find('td').eq(0).addClass('info-name');
     $( rowNode ).find('td').eq(1).addClass('info-artist');
@@ -139,7 +169,8 @@ function showResults(response){
 
 //used to update info of player
 function getInfo() {
-    var thumbnail = $( this ).data("thumb-nail");
+  var thumbnail = $( this ).data("thumb-nail");
+  var trackId = $(this).attr('id');
   $( "#thumbnail").html ("<img class='thumbnail' src='"+thumbnail+"'>" );
   $( "#song" ).html("<p class='navbar-text'>" + $(this).children('.info-name').html() +"</p>");
   $( "#artist" ).html("<p class='navbar-text'>" + $(this).children('.info-artist').children('a').text() +"</p>");
@@ -156,14 +187,21 @@ $( "body" ).on( "click", ".music-to-choose", getInfo);//needs to use .on and bin
 function submitComment(){
     var cur_time = wavesurfer.getCurrentTime();
     var comment = $("#comment").val(); //get comment content
-
-    firebase.database().ref('Comments/').push({
+    var musicID = $(".music-title").attr("id");
+    
+    var song = firebase.database().ref("Comments").child(musicID).push({
         timestamp: cur_time,
         comment: comment,
+    });
+    printComment(cur_time, comment);
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip();
     });
     $("#comment").val('');//empty input area after submit
 }
 
+
+    
 function printComment(ts, comment){
     //get container width
     var width = $('#waveform').css('width').replace(/[^-\d\.]/g, '');
@@ -174,7 +212,7 @@ function printComment(ts, comment){
                         class="h3 comment-indicator" 
                         data-toggle="tooltip" 
                         data-placement="bottom" 
-                        data-original-title="${comment} @ ${ts}s"
+                        title="${comment} @ ${ts}s"
                         style="left:${position}px"
                     >.</span>`;
     $('#showComments').append(element);

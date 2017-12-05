@@ -20,12 +20,11 @@ wavesurfer.on('loading', function (percents) {
 wavesurfer.on('ready', function (percents) {
     document.getElementById('progress').style.display = 'none';
     //clear comments for previous wave before loading comments for the current one
-    $('#showComments').html('');
     
     //example use:
-    printComment(19.6,"test comment");
+    /*printComment(19.6,"test comment");
     printComment(2,"beginning test");
-    printComment(29.6,"another comment");
+    printComment(29.6,"another comment");*/
 
     //initialize tooltips on comments whenever a different wave is loaded
     $(function () {
@@ -46,13 +45,16 @@ function(){
 
 $( "body" ).on( "click", ".music-to-choose", switchMusic);
 function switchMusic(){
+     var trackId = $(this).attr('id');
      var thumbnail = $( this ).data("thumb-nail");
      var previewURL = $(this).children('.previewUrl').children('a').attr('href');
      wavesurfer.load(previewURL);
      var music_title = $(this).children('.info-name').html();
      var music_artist = $(this).children('.info-artist').children('a').text();
-     $("#music-title").html(music_title);
-     $("#music-artist").html(music_artist);
+     $(".music-title").html(music_title);
+     $(".music-title").attr("id", trackId);
+     $(".music-artist").html(music_artist);
+     
 }
 
 $( "#volume" ).change(function() {
