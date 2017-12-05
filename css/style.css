@@ -308,12 +308,12 @@ a.video:hover{
     font-weight: bold
 }
 
-h2{
+.sub-h h2{
     display: inline;
     margin-left: -45px
 }
 
-h3 {
+.sub-h h3 {
     margin-left: -42px;
     margin-top: -5px
 }
